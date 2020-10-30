@@ -13,7 +13,7 @@ int main()
         ofstream inp("parigame.inp");
         int n = ran(2, 4);
         inp << 1 << endl << n << endl;
-        for (int i = 1; i <= n; ++i)
+        for (int i  1; i <= n; =++i)
         {
             for (int j = 1; j <= n; ++j)
             {
