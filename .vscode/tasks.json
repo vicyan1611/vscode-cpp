@@ -1,28 +1,67 @@
 {
+    "version": "2.0.0",
     "tasks": [
         {
             "type": "shell",
-            "label": "C/C++: g++.exe build active file",
+            "label": "Build C++14",
             "command": "C:\\TDM-GCC-64\\bin\\g++.exe",
+            "args": [
+                "-g",
+                "-std=c++14",
+                "${file}",
+                "-pipe",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "C:\\TDM-GCC-64\\bin"
+            },
+            "group": {
+                "kind": "build",
+            }
+        },
+
+{
+            "type": "shell",
+            "label": "Build and Run C++14",
+            "command": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+            "dependsOn": [
+                "Build C++14"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "measure",
+            "command": "Measure-Command",
+            "args": [
+                "{",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "}"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++.exe build active file",
+            "command": "C:/TDM-GCC-64/bin/g++.exe",
             "args": [
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "-std=c++11"
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
             "options": {
-                "cwd": "${workspaceFolder}"
+                "cwd": "C:/TDM-GCC-64/bin"
             },
             "problemMatcher": [
                 "$gcc"
             ],
-            "group":
-            {
-                "kind": "build",
-                "isDefault": true
-            }
+            "group": "build",
+            "detail": "compiler: C:/TDM-GCC-64/bin/g++.exe"
         }
-    ],
-    "version": "2.0.0"
+    ]
 }
